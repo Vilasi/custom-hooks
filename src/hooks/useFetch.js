@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-export function useFetch(fetchFunction) {
+export function useFetch(fetchFunction, initialValue) {
   const [isFetching, setIsFetching] = useState(false);
-  const [fetchedData, setFetchedData] = useState([]);
   const [error, setError] = useState();
+  const [fetchedData, setFetchedData] = useState(initialValue);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,6 +26,8 @@ export function useFetch(fetchFunction) {
   return {
     isFetching,
     fetchedData,
+    setFetchedData,
+    setIsFetching,
     error,
   };
 }
